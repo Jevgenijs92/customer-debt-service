@@ -17,7 +17,7 @@ public class CurrencyServiceImpl implements CurrencyService {
     @Override
     public Currency getCurrencyByCode(String code) throws ResourceNotFoundException {
         return currencyRepository.findCurrencyByCode(code)
-                .orElseThrow(()-> new ResourceNotFoundException("Cannot find currency for code: " + code));
+                .orElseThrow(() -> new ResourceNotFoundException("Cannot find currency for code: " + code));
     }
 
 }
