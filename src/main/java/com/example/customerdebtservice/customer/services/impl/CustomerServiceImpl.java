@@ -47,7 +47,7 @@ public class CustomerServiceImpl implements CustomerService {
         }
 
         final Customer customer = new Customer();
-        convertCustomerFormToCustomer(customerForm, customer);
+        populateCustomerFormToCustomer(customerForm, customer);
         return customerConverter.convert(customerRepository.save(customer));
     }
 
@@ -55,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerData updateCustomer(Long id, CustomerForm customerForm) throws ResourceNotFoundException {
         log.info("Updating customer with ID: " + id);
         Customer customer = findCustomerByIdOrThrow(id);
-        convertCustomerFormToCustomer(customerForm, customer);
+        populateCustomerFormToCustomer(customerForm, customer);
         return customerConverter.convert(customerRepository.save(customer));
     }
 
@@ -66,12 +66,13 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.deleteById(id);
     }
 
-    private Customer findCustomerByIdOrThrow(Long id) {
+    @Override
+    public Customer findCustomerByIdOrThrow(Long id) {
         return customerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found. ID: " + id));
     }
 
-    private void convertCustomerFormToCustomer(final CustomerForm source, final Customer target) {
+    private void populateCustomerFormToCustomer(final CustomerForm source, final Customer target) {
         if (Objects.nonNull(source) && Objects.nonNull(target)) {
             target.setName(source.getName());
             target.setSurname(source.getSurname());

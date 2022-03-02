@@ -2,6 +2,7 @@ package com.example.customerdebtservice.customer.services;
 
 import com.example.customerdebtservice.customer.dto.CustomerData;
 import com.example.customerdebtservice.customer.forms.CustomerForm;
+import com.example.customerdebtservice.customer.models.Customer;
 import com.example.customerdebtservice.shared.exceptions.ResourceExistsException;
 import com.example.customerdebtservice.shared.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public interface CustomerService {
     /**
      * Retrieves customers from database in a pageable form (page number, page size, sort)
      *
-     * @param pageable contains Customer and Pageable data
+     * @param pageable contains Pageable data
      * @return list of specific page number and page size sorted Customer Data
      */
     List<CustomerData> getCustomers(Pageable pageable);
@@ -54,4 +55,12 @@ public interface CustomerService {
      * @param id - Customer ID
      */
     void deleteCustomer(Long id);
+
+    /**
+     * Retrieves Customer by ID
+     * @param id of customer to be retrieved
+     * @return Customer object
+     * @throws ResourceNotFoundException
+     */
+    Customer findCustomerByIdOrThrow(Long id) throws ResourceNotFoundException;
 }
