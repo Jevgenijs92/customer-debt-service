@@ -12,7 +12,7 @@ import javax.persistence.*;
 @ToString(of = {"symbol"})
 public class Currency {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_currency")
     private Long id;
 
     private String name;

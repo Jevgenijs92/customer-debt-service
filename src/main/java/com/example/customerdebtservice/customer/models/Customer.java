@@ -17,7 +17,7 @@ import java.util.List;
 @ToString(of = {"name", "surname", "email"})
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_customer")
     private Long id;
 
     private String name;
@@ -30,7 +30,7 @@ public class Customer {
 
     private String password;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Debt> debts = new ArrayList<>();
 
 }

@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @ToString(of = {"id", "amount"})
 public class Debt {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_debt")
     private Long id;
 
     private BigDecimal amount;
