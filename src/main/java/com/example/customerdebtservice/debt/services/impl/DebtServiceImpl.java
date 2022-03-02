@@ -1,7 +1,6 @@
 package com.example.customerdebtservice.debt.services.impl;
 
 import com.example.customerdebtservice.currency.services.CurrencyService;
-import com.example.customerdebtservice.customer.models.Customer;
 import com.example.customerdebtservice.customer.services.CustomerService;
 import com.example.customerdebtservice.debt.converters.DebtConverter;
 import com.example.customerdebtservice.debt.dto.DebtData;
@@ -42,7 +41,7 @@ public class DebtServiceImpl implements DebtService {
     }
 
     @Override
-    public DebtData createDebt(DebtForm debtForm) throws ResourceNotFoundException {
+    public DebtData createDebt(DebtForm debtForm) {
         log.info("Creating new debt for customer ID: " + debtForm.getCustomerId());
         Debt debt = new Debt();
         populateDebtFormToDebt(debtForm, debt);

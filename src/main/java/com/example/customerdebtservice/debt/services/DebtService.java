@@ -32,9 +32,8 @@ public interface DebtService {
      *
      * @param debtForm   contains debt attributes
      * @return created debt data
-     * @throws ResourceNotFoundException when customer with passed ID doesn't exist
      */
-    DebtData createDebt(DebtForm debtForm) throws ResourceNotFoundException;
+    DebtData createDebt(DebtForm debtForm);
 
     /**
      * Updates debt values.
