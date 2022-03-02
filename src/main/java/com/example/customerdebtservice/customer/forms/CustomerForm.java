@@ -18,7 +18,8 @@ public class CustomerForm {
     @NotBlank(message = "Country cannot be empty")
     private String country;
     @NotBlank(message = "Email cannot be empty")
-    @Email(message = "Email is not valid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$") // RFC 5322
+    @Email(message = "Email is not valid",
+            regexp = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$") // OWASP
     private String email;
     @NotBlank(message = "Password cannot be empty")
     private String password;

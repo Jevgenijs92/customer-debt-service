@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,7 +30,7 @@ public class Customer {
 
     private String password;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-    private List<Debt> debts;
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    private List<Debt> debts = new ArrayList<>();
 
 }

@@ -40,8 +40,6 @@ public interface CustomerService {
 
     /**
      * Updates customer by replacing all existing attributes with the new attributes
-     * ONLY IF the passed attribute is not null.
-     * In other case, e.g., if attribute is null then it will not be overwritten.
      *
      * @param id           - Customer ID
      * @param customerForm - containing customer attributes
@@ -51,10 +49,9 @@ public interface CustomerService {
     CustomerData updateCustomer(Long id, CustomerForm customerForm) throws ResourceNotFoundException;
 
     /**
-     * Deletes customer from database
+     * Deletes customer from database if exists
      *
      * @param id - Customer ID
-     * @throws ResourceNotFoundException when customer is not found in the database
      */
-    void deleteProduct(Long id) throws ResourceNotFoundException;
+    void deleteCustomer(Long id);
 }
