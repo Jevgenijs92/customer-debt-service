@@ -1,6 +1,8 @@
 package com.example.customerdebtservice.debt.services.impl;
 
 import com.example.customerdebtservice.currency.services.CurrencyService;
+import com.example.customerdebtservice.customer.models.Customer;
+import com.example.customerdebtservice.customer.repositories.CustomerRepository;
 import com.example.customerdebtservice.customer.services.CustomerService;
 import com.example.customerdebtservice.debt.converters.DebtConverter;
 import com.example.customerdebtservice.debt.dto.DebtData;
@@ -25,6 +27,7 @@ public class DebtServiceImpl implements DebtService {
     private final DebtRepository debtRepository;
     private final DebtConverter debtConverter;
     private final CustomerService customerService;
+    private final CustomerRepository customerRepository;
     private final CurrencyService currencyService;
 
     @Override
@@ -60,8 +63,9 @@ public class DebtServiceImpl implements DebtService {
     public void deleteDebt(Long id) throws ResourceNotFoundException {
         log.info("Deleting debt with ID: " + id);
         Debt debt = findDebtByIdOrThrow(id);
-        debt.setCustomer(null);
-        debtRepository.deleteById(id);
+        Customer customer = debt.getCustomer();
+        customer.getDebts().remove(debt);
+        customerRepository.save(customer);
     }
 
     private Debt findDebtByIdOrThrow(Long id) {

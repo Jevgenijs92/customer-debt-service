@@ -4,6 +4,7 @@ import com.example.customerdebtservice.currency.dto.CurrencyData;
 import com.example.customerdebtservice.currency.models.Currency;
 import com.example.customerdebtservice.currency.services.CurrencyService;
 import com.example.customerdebtservice.customer.models.Customer;
+import com.example.customerdebtservice.customer.repositories.CustomerRepository;
 import com.example.customerdebtservice.customer.services.CustomerService;
 import com.example.customerdebtservice.debt.converters.DebtConverter;
 import com.example.customerdebtservice.debt.dto.DebtData;
@@ -45,6 +46,9 @@ public class DebtServiceUnitTest {
 
     @Mock
     private CustomerService customerService;
+
+    @Mock
+    private CustomerRepository customerRepository;
 
     @Mock
     private CurrencyService currencyService;
@@ -134,10 +138,13 @@ public class DebtServiceUnitTest {
     }
 
     @Test
-    public void deleteDebtShouldCallRepositoryDeleteById() {
-        when(debtRepository.findById(any(Long.class))).thenReturn(Optional.of(new Debt()));
+    public void deleteDebtShouldCallCustomerRepositorySave() {
+        Customer customer = new Customer();
+        customer.setId(1L);
+        customer.setDebts(debts);
+        when(debtRepository.findById(any(Long.class))).thenReturn(Optional.of(debts.get(1)));
+        when(customerRepository.save(any(Customer.class))).thenReturn(customer);
         debtService.deleteDebt(1L);
-        verify(debtRepository).deleteById(any());
     }
 
     @Test

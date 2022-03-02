@@ -30,7 +30,7 @@ public class Customer {
 
     private String password;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Debt> debts = new ArrayList<>();
 
 }
