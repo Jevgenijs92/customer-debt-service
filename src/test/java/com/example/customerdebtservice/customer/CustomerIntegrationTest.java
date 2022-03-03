@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
@@ -22,6 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 @SpringBootTest
+@WithMockUser(roles = "USER")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CustomerIntegrationTest {
 
@@ -48,7 +50,6 @@ public class CustomerIntegrationTest {
         customerForm.setCountry(country);
         customerForm.setEmail(email);
 
-//        correctJsonCustomerData.put("id", 1);
         correctJsonCustomerData.put("name", name);
         correctJsonCustomerData.put("surname", surname);
         correctJsonCustomerData.put("country", country);
