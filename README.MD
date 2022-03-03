@@ -1,4 +1,4 @@
-# Simple Rest Service
+# Customer Debt Service
 
 ## Prerequisites
 Java 11
