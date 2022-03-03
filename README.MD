@@ -23,6 +23,9 @@ http://localhost:8080/api-docs
 
 <code>password: 1234 </code>
 
+### Tests
+To run all tests execute following command: 
+<code>./mvnw test</code>
 
 
 
