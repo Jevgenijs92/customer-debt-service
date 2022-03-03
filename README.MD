@@ -19,8 +19,9 @@ https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html
 http://localhost:8080/api-docs
 
 ### All endpoints (except API docs) are secured with basic authentication
-<code>username: user
-password: 1234 </code>
+<code>username: user </code>
+
+<code>password: 1234 </code>
 
 
 
