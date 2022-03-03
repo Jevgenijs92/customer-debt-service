@@ -20,7 +20,6 @@ http://localhost:8080/api-docs
 
 ### All endpoints (except API docs) are secured with basic authentication
 <code>username: user
-
 password: 1234 </code>
 
 
