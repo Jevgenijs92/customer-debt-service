@@ -60,7 +60,7 @@ public interface CustomerService {
      * Retrieves Customer by ID
      * @param id of customer to be retrieved
      * @return Customer object
-     * @throws ResourceNotFoundException
+     * @throws ResourceNotFoundException when customer doesn't exist
      */
     Customer findCustomerByIdOrThrow(Long id) throws ResourceNotFoundException;
 }

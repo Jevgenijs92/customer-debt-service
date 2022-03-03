@@ -45,6 +45,7 @@ public class CustomerConverterUnitTest {
         when(debtConverter.convert(any())).thenReturn(new DebtData());
         CustomerData result = customerConverter.convert(customer);
 
+        assert result != null;
         assertEquals(customer.getId(), result.getId());
         assertEquals(customer.getName(), result.getName());
         assertEquals(customer.getSurname(), result.getSurname());
