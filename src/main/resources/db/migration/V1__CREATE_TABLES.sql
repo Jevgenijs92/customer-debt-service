@@ -1,12 +1,3 @@
--- CURRENCY
-CREATE TABLE sequence_currency
-(
-    next_val BIGINT
-);
-
-INSERT INTO sequence_currency
-VALUES (1);
-
 CREATE SEQUENCE sequence_currency;
 
 CREATE TABLE currency
@@ -22,15 +13,6 @@ VALUES ('Euro', 'EUR', '€'),
        ('Dollar', 'USD', '$'),
        ('Lats', 'LVL', 'Ls');
 
--- CUSTOMER
-CREATE TABLE sequence_customer
-(
-    next_val BIGINT
-);
-
-INSERT INTO sequence_customer
-VALUES (1);
-
 CREATE SEQUENCE sequence_customer;
 
 CREATE TABLE customer
@@ -42,15 +24,6 @@ CREATE TABLE customer
     email    VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(60)  NOT NULL
 );
-
--- DEBT
-CREATE TABLE sequence_debt
-(
-    next_val BIGINT
-);
-
-INSERT INTO sequence_debt
-VALUES (1);
 
 CREATE SEQUENCE sequence_debt;
 

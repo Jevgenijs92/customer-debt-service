@@ -17,7 +17,8 @@ import java.util.List;
 @ToString(of = {"name", "surname", "email"})
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_customer")
+    @SequenceGenerator(name = "sequence_customer", sequenceName = "sequence_customer", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_customer")
     private Long id;
 
     private String name;
