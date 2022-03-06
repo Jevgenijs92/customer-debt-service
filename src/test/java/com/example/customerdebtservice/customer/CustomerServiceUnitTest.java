@@ -18,6 +18,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,9 @@ public class CustomerServiceUnitTest {
 
     @Mock
     private CustomerConverter customerConverter;
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @InjectMocks
     private CustomerServiceImpl customerService;
@@ -99,6 +103,7 @@ public class CustomerServiceUnitTest {
     @Test
     public void createCustomerShouldReturnNewCreatedCustomerData() {
         when(customerRepository.findByEmail(any())).thenReturn(Optional.empty());
+        when(passwordEncoder.encode(any())).thenReturn("12345");
         when(customerRepository.save(any(Customer.class))).thenReturn(customers.get(0));
         when(customerConverter.convert(any(Customer.class))).thenReturn(expectedCustomerDataList.get(0));
 
@@ -115,6 +120,7 @@ public class CustomerServiceUnitTest {
     @Test
     public void updateCustomerShouldReturnUpdatedCustomerData() {
         when(customerRepository.findById(any(Long.class))).thenReturn(Optional.of(new Customer()));
+        when(passwordEncoder.encode(any())).thenReturn("12345");
         when(customerRepository.save(any(Customer.class))).thenReturn(customers.get(0));
         when(customerConverter.convert(any(Customer.class))).thenReturn(expectedCustomerDataList.get(0));
 

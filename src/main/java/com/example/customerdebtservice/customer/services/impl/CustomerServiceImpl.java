@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
     private final CustomerConverter customerConverter;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public List<CustomerData> getCustomers(Pageable pageable) {
@@ -78,7 +80,7 @@ public class CustomerServiceImpl implements CustomerService {
             target.setSurname(source.getSurname());
             target.setCountry(source.getCountry());
             target.setEmail(source.getEmail());
-            target.setPassword(source.getPassword());
+            target.setPassword(passwordEncoder.encode(source.getPassword()));
         }
     }
 }
